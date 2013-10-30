@@ -1,0 +1,95 @@
+<html>
+<head>
+    <title>Output</title>
+    <style type="text/css">
+        body {
+            background: #000000;
+            margin: 0;
+            overflow: hidden;
+            -webkit-app-region: drag;
+            -webkit-user-select: none;
+        }
+        /*
+        #invisibleTopLayer {
+            position:fixed;
+            left: 0px;
+            width: 100%;
+            top: 0px;
+            height: 100%;
+            z-index: 1000;
+        }*/
+
+        iframe {
+           /* position:fixed; */
+            position:absolute;
+            left: 0px;
+            width: 100%;
+            top: 0px;
+            height: 100%;
+        }
+        #frame1 {
+            z-index: 3;
+            opacity:1;
+        }
+
+        #frame2 {
+            z-index: 4;
+            opacity:1;
+        }
+
+        #frameGroupA {
+            opacity: 1;
+        }
+
+        #frameGroupB {
+            opacity: 0;
+        }
+
+        #messages {
+            z-index: 5;
+            position:fixed;
+            top:10px;
+            right:10px;
+        }
+    </style>
+
+    <script>
+        //Node-webkit
+        document.addEventListener('DOMContentLoaded',function(){
+            //If this element is on top and covers the whole window this will prevent user from dropping a new html file that gets loaded in the window
+            stopDragAndDrop(document.getElementById("invisibleTopLayer")); 
+                 
+        })
+
+        function stopDragAndDrop(element) {
+            element.addEventListener("dragover", function(e) {
+                e.preventDefault();
+            }, false);
+            element.addEventListener("drop", function(e) {
+                e.preventDefault();
+            }, false);
+        }
+        //end node-webkit
+
+        document.addEventListener('DOMContentLoaded',function(){
+            var strWindowFeatures = "menubar=no,location=no,resizable=yes,scrollbars=no,status=no";
+            //Node-webkit opens controls.html first which in turn opens this window
+            //CefWithSyphonopens this window first and we therefore need to open controls.html here
+            //Check if we are in node-webkit
+            if (typeof require == "undefined") {
+                var controlsWin = window.open("controls.html", "Controls", strWindowFeatures);
+            }                 
+        })
+
+    </script>
+</head>
+<body>
+    <div id="invisibleTopLayer"></div>
+    <div id="frameGroupA">
+        <iframe id="frame1" src="" allowtransparency="true" scrolling="no" frameBorder="no"></iframe>
+    </div>
+    <div id="frameGroupB">
+        <iframe id="frame2" src="" allowtransparency="true" scrolling="no" frameBorder="no"></iframe>
+    </div>
+</body>
+</html>

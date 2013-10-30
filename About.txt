@@ -1,0 +1,5 @@
+Sliider v0.1 Preview. 
+Vibeke Bertelsen 2013
+http://www.udart.dk
+
+Sliider is a tool for VJ-ing or otherwise perform live with web based visuals

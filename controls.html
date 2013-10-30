@@ -1,0 +1,208 @@
+<html>
+<head>
+    <link href="lib/jquery-ui/css/dark-hive/jquery-ui.css" rel="stylesheet">
+    <script src="lib/jquery-ui/js/jquery-1.9.1.js"></script>
+    <script src="lib/jquery-ui/js/jquery-ui.js"></script>
+    <script src="js/sliider.js"></script>
+    <script src="js/sliider.menubar.js"></script>
+    <script src="js/sliider.util.js"></script>
+    <title>Controls</title>
+    <style type="text/css">
+
+
+
+        body {
+            background: #222;
+            margin: 0;
+            overflow: hidden;
+            font-size:10px;
+            font-family: Verdana,sans-serif;
+            -webkit-user-select: none;
+            color: #aaa;
+        }
+
+        a:link, a:visited {
+            color: #aaa;
+        }
+
+        a:hover, a:active {
+            color: #fff;
+        }
+        
+        #filedrag1, #filedrag2
+        {
+            text-align: center;
+            padding: 0;
+            margin: 0% 2% 0% 0%;
+            color: #aaa;
+            border: 1px solid #555;
+            border-color: #555;
+            width: 45%;
+            height: 82%;
+            position:absolute;
+            background-size:cover;
+            background-position: center center;
+            background-repeat:no-repeat;
+        }
+        #filedrag2 {
+            left: 49%;
+        }
+
+        #filedrag1 > #txt, #filedrag2 > #txt
+        {
+            bottom: -16px;
+            position: absolute;
+        }
+
+        .uiGroup {
+            padding:2% 2% 30% 2%;
+            margin: 0 0 15px 0;
+            width:100%;
+            position: relative;
+        }
+
+        .group {
+            padding:10px 2% 10px 2%;
+            margin: 0;
+            width:100%;
+            position:relative;
+        }
+
+        #messages {
+            position:fixed;
+            top:10px;
+            right:10px;
+        }
+
+        #filedrag1.hover, #filedrag2.hover
+        {
+            border-color: #fff;
+            border-style: solid;
+        }
+
+        #windowTitleBar{
+            -webkit-app-region: drag;
+            position:relative;
+            height: 15px;
+            background: #000;
+        }
+
+        #uiContainer {
+            -webkit-user-select: none;
+        }
+
+        #crossfader {
+            margin: 0;
+            position:relative;
+            width:97%;
+        }
+
+        .uiTitle {
+            color: #aaa;
+        }
+
+        .uiElement {
+            padding-top: 6px;
+        }
+
+        .groupHeader {
+            color: #aaa;
+            font-weight: bold;
+        }
+
+        #Parameters1 .parameters, #Parameters2 .parameters {
+            left:-2%; 
+            padding-left: 10px;
+            padding-bottom: 6px;
+            background: #333;
+            position:relative;
+        }
+
+        /* JQUERY UI */
+        .ui-slider a {
+            outline:none;
+            margin:0;
+        }
+        .ui-slider {
+            padding:0 0;
+            margin:0 0;
+            width:97%;
+        }
+        /* inputparameters input field */
+        .textBox input {
+            padding:0 0;
+            margin:0 0;
+            width:97%;
+        }
+
+        #urlButtonA, #urlButtonB
+        {
+            padding-right: 0%;
+            margin: 0% 2% 0% 0%;
+            /*width: 45%;*/
+            position:absolute;
+        }
+
+        #urlButtonB {
+            left: 49%;
+        }
+
+        /* code for open url dialog */
+        #dialogOpen {
+            display:none;
+        } 
+
+        #dialogOpen input {
+            padding:0 0;
+            margin:0 0;
+            width:97%;
+        }
+
+        /* All jqueryUi corners */
+        .ui-corner-all {
+            border-bottom-right-radius: 2px;
+            border-bottom-left-radius: 2px;
+            border-top-right-radius: 2px;
+            border-top-left-radius: 2px;
+        }
+
+        /* don't do blue background on hovered buttons */
+        .ui-state-hover {
+            background: #222222;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="uiContainer">
+        <div id="windowTitleBar"></div>
+        <div id="openUrlButtons" class="group">
+            <button id="urlButtonA" appTargetFrameId="#frame1" appDropZoneId="#filedrag1">Open</button>
+            <button id="urlButtonB" appTargetFrameId="#frame2" appDropZoneId="#filedrag2">Open</button>
+        </div>
+        <div id="layerGroup" class="uiGroup">
+            <div id="filedrag1" class="filedrag" appTargetFrameId="#frame1"><div id="txt">Layer A</div></div>
+            <div id="filedrag2" class="filedrag" appTargetFrameId="#frame2"><div id="txt">Layer B</div></div>
+        </div>
+        <div id="crossfader" class="group">
+            <div id="slider_mainCrossfader"></div>
+        </div>
+        <div id="Parameters1" class="group">
+            <div class="groupHeader">Parameters A</div>
+            <div class="parameters"></div>
+        </div>
+        <div id="Parameters2" class="group">
+            <div class="groupHeader">Parameters B</div>
+            <div class="parameters"></div>
+        </div>
+    </div>
+    <div id="dialogOpen" title="Open">
+        <div>
+            <button id="dialogOpenFile">Open file</button>
+            <input style="display:none;" id="nwFileDialog" type="file" />
+        </div>
+        <div>Page URL or file path</div>
+        <input type="text" id="dialogOpenfield"  value="http://" />
+    </div>
+</body>
+</html>

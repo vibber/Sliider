@@ -1,0 +1,13 @@
+{
+  "name": "Sliider",
+  "main": "controls.html",
+  "webkit": {
+    "plugin": true,
+    "node-remote": "sketchfab.com"
+  },
+  "window": {
+    "frame": false,
+    "width":440,
+    "height":600
+  }
+}
